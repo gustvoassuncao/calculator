@@ -48,7 +48,33 @@
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
+
+
     <script type="text/babel">
+        const textVariants = {
+            default: 'text-xl',
+            muted: 'text-xl text-(--text-secondary)',
+            heading: 'text-2xl',
+            blast: 'text-3xl',
+        }
+
+        function Text({
+            as = 'span',
+            variant = 'default',
+            className,
+            children,
+            ...props
+        }) {
+            return React.createElement(
+                as,
+                {
+                    className: `${textVariants[variant]} ${className}`,
+                    ...props
+                },
+                children
+            )
+        }
+
         function App() {
             return (
                 <main classNme="py-28 px-4">
